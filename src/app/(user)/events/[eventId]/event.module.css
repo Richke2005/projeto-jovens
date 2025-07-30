@@ -1,0 +1,24 @@
+.page {
+  --gray-rgb: 0, 0, 0;
+  --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
+  --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
+  padding: 0px;
+}
+
+.article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    gap: 70px;
+    padding: 30px;
+}
+
+.photoGrid {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+    width: 80%;
+}

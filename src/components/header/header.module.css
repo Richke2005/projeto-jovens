@@ -1,0 +1,98 @@
+.container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 30px;
+}
+
+.logo {
+    padding: 10px;
+}
+
+.navList{
+    padding: 10px;
+    display: flex;
+    list-style: none;
+    gap: 40px;
+}
+
+.navList li {
+    font-size: 1.1rem;
+    color: var(--foreground);
+}
+
+/* Estilos para o botão de menu */
+.menuButton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: none;
+    padding: 10px;
+    background-color: var(--background-secondary);
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.menuButton span {
+    display: block;
+    width: 20px;
+    height: 3px;
+    background-color: var(--foreground);
+    margin: 5px auto;
+}
+
+.menuButton span.colored {
+    background-color: var(--emphasis-color1);
+}
+
+.sidebar {
+  display: block;
+  top: 0px;
+  left: 0;
+  translate: 0px 0px;
+  min-height: 100vh;
+  min-width: 280px;
+  width: 280px;
+  position: fixed;
+  background-color: var(--background-secondary);
+  translate: -100% 0px;
+  transition: 0.5s ease;
+  z-index: 2;
+}
+
+.sidebar.open {
+  translate: 0px 0px;
+}
+
+.sidebarMenu {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    list-style: none;
+    gap: 20px;
+}
+
+.sidebarMenu li {
+    padding: 20px;
+    font-size: 1.2rem;
+    color: var(--foreground);
+}
+
+@media (max-width: 600px) {
+    .logo{
+        display: none;
+    }
+
+   .navList {
+        display: none;
+    }
+
+   .menuButton {
+        display: block;
+   }
+}

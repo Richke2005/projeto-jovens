@@ -1,0 +1,32 @@
+.centered{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 5px;
+}
+
+.signUpContainer {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.signUpForm {
+    width: 100%;
+    padding: 30px;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 600px) {
+    .signUpContainer {
+        width: 90%;
+    }
+
+}

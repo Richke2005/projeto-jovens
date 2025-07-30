@@ -1,0 +1,33 @@
+.page {
+  --gray-rgb: 0, 0, 0;
+  --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
+  --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
+  --button-primary-hover: #383838;
+  --button-secondary-hover: #f2f2f2;
+  padding: 0px;
+}
+
+.centered {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 80px;
+}
+
+.cardsContainer {
+  margin-top: 50px;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+.changePageContainer {
+  display: flex;
+  padding: 30px;
+  justify-content: space-evenly;
+  gap: 30px;
+}

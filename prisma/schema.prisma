@@ -1,0 +1,255 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+type EventLocal {
+  city    String
+  street  String
+  cep     String
+}
+
+type PlaylistLikes {
+  is_liked  Boolean
+  user_id   String  @db.ObjectId
+  user_name String
+}
+
+type SermonComents {
+  comment    String
+  user_id    String @db.ObjectId
+  user_image String
+  user_name  String
+}
+
+type SermonLikes {
+  is_liked  Boolean
+  user_id   String  @db.ObjectId
+  user_name String
+}
+
+type StudyPlanModules {
+  activities_url String
+  chapters       StudyPlanModulesChapters[]
+  name           String
+}
+
+type StudyPlanModulesChapters {
+  audio_url String
+  content   String
+  image_url String
+  title     String
+  video_url String
+}
+
+type UserSkillsArea {
+  id    String @map("_id") @db.ObjectId
+  name  String
+  skill String
+}
+
+/// This collection uses a JSON Schema defined in the database, which requires additional setup for migrations. Visit https://pris.ly/d/mongodb-json-schema for more info.
+
+model Department {
+  id         String  @id @default(auto()) @map("_id") @db.ObjectId
+  created_at String
+  is_active  Boolean
+  name       String
+
+  @@map("department")
+}
+
+/// This collection uses a JSON Schema defined in the database, which requires additional setup for migrations. Visit https://pris.ly/d/mongodb-json-schema for more info.
+
+model Event {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  coments         Json?
+  cover_image_url String
+  department_id   String   @db.ObjectId
+  description     String
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  images          Json?
+  local           EventLocal
+  title           String
+  start_date      DateTime
+  end_date        DateTime
+
+  @@map("event")
+}
+
+/// This collection uses a JSON Schema defined in the database, which requires additional setup for migrations. Visit https://pris.ly/d/mongodb-json-schema for more info.
+
+model Music {
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  author    String
+  music_url String
+  name      String
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  tags      Json?
+  theme     String
+
+  @@map("music")
+}
+
+/// This collection uses a JSON Schema defined in the database, which requires additional setup for migrations. Visit https://pris.ly/d/mongodb-json-schema for more info.
+
+model Notice {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  created_at    DateTime @db.Date
+  department_id String   @db.ObjectId
+  description   String
+  title         String
+
+  @@map("notice")
+}
+
+/// This collection uses a JSON Schema defined in the database, which requires additional setup for migrations. Visit https://pris.ly/d/mongodb-json-schema for more info.
+
+model Playlist {
+  id     String          @id @default(auto()) @map("_id") @db.ObjectId
+  likes  PlaylistLikes[]
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  musics Json?
+  title  String
+
+  @@map("playlist")
+}
+
+/// This collection uses a JSON Schema defined in the database, which requires additional setup for migrations. Visit https://pris.ly/d/mongodb-json-schema for more info.
+
+model Sermon {
+  id              String          @id @default(auto()) @map("_id") @db.ObjectId
+  coments         SermonComents[]
+  cover_image_url String
+  department_id   String          @db.ObjectId
+  likes           SermonLikes[]
+  preacher        String
+  sermon_serie    String?          @db.ObjectId // Reference to Sermon_serie can be null
+  start_date      DateTime
+  summary         String
+  tags            Json?
+  title           String
+  video_url       String
+
+  @@map("sermon")
+}
+
+/// This collection uses a JSON Schema defined in the database, which requires additional setup for migrations. Visit https://pris.ly/d/mongodb-json-schema for more info.
+
+model Sermon_serie {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  created_at  DateTime @db.Date
+  description String
+  title       String
+
+  @@map("sermon_serie")
+}
+
+/// This collection uses a JSON Schema defined in the database, which requires additional setup for migrations. Visit https://pris.ly/d/mongodb-json-schema for more info.
+
+model Skills_area {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  description String
+  name        String
+
+  @@map("skills_area")
+}
+
+/// This collection uses a JSON Schema defined in the database, which requires additional setup for migrations. Visit https://pris.ly/d/mongodb-json-schema for more info.
+
+model Study_plan {
+  id          String             @id @default(auto()) @map("_id") @db.ObjectId
+  cover_image String
+  modules     StudyPlanModules[]
+  summary     String
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  tags        Json?
+  title       String
+
+  @@map("study_plan")
+}
+
+/// This collection uses a JSON Schema defined in the database, which requires additional setup for migrations. Visit https://pris.ly/d/mongodb-json-schema for more info.
+
+model Tag {
+  id  String @id @default(auto()) @map("_id") @db.ObjectId
+  tag String
+
+  @@map("tag")
+}
+
+/// This collection uses a JSON Schema defined in the database, which requires additional setup for migrations. Visit https://pris.ly/d/mongodb-json-schema for more info.
+
+model User {
+  id            String           @id @map("_id")
+  name          String
+  email         String
+  phoneNumber   String?
+  emailVerified Boolean
+  image         String?
+  createdAt     DateTime
+  updatedAt     DateTime
+  sessions      Session[]
+  accounts      Account[]
+  skillsArea    UserSkillsArea[]
+  role       String?
+  banned     Boolean?
+  banReason  String?
+  banExpires DateTime?
+
+  @@unique([email])
+  @@map("user")
+}
+
+model Session {
+  id        String   @id @map("_id")
+  expiresAt DateTime
+  token     String
+  createdAt DateTime
+  updatedAt DateTime
+  ipAddress String?
+  userAgent String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  impersonatedBy String?
+
+  @@unique([token])
+  @@map("session")
+}
+
+model Account {
+  id                    String    @id @map("_id")
+  accountId             String
+  providerId            String
+  userId                String
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime
+  updatedAt             DateTime
+
+  @@map("account")
+}
+
+model Verification {
+  id         String    @id @map("_id")
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime?
+  updatedAt  DateTime?
+
+  @@map("verification")
+}

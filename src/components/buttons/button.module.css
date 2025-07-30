@@ -1,0 +1,20 @@
+.button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 200px;
+    width: 100%;
+    padding: 20px;
+    border: 1px solid var(--emphasis-color1);
+    text-align: center;
+    background-color: transparent;
+    color: var(--foreground);
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    font-family: 'GeneralSans-Regular';
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: var(--emphasis-color1);
+}

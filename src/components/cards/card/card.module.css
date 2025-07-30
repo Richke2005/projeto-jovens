@@ -1,0 +1,28 @@
+.sermonCard{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.sermonCard:hover{
+    transform: scale(1.02);
+    background-color: var(--background-secondary);
+    transition: all 0.3s ease-in-out;
+}
+
+.info{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+}
+
+.image{
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
+}
