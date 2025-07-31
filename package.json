@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --port 4000 & npx next-video sync -w",
-    "build": "next build",
+    "build": "npx prisma generate & next build",
     "start": "next start",
     "lint": "next lint"
   },
