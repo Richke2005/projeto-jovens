@@ -5,6 +5,22 @@ export default class EventService extends Service{
         super("event");
     }
 
+    async findAll(skip = 0, take = 10) {
+        try {
+            return await this.client.findMany({
+                skip: skip,
+                take: take,
+                orderBy:{
+                    start_date: 'desc'
+                }
+            });
+            
+        } catch (error) {
+            console.error("Error fetching all records:", error);
+            throw error;
+        }
+    }
+
     async findLast(){
         try{
             return await this.client.findFirst({
