@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './event.module.css';
 import Image from 'next/image';
-import EventEndpoint from '@/services/server/eventEndpoint.js';
+import EventEndpoint from '@/services/client/eventEndpoint.js';
 import ArticleTitle from '@/components/titles/articleTitle/articleTitle';
 
 export default async function EventPage({ params }) {

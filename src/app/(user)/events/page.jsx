@@ -3,13 +3,13 @@ import styles from "./events.module.css";
 import Title from '@/components/titles/pageTitle/title.jsx';
 import MainCard from '@/components/cards/mainCard/mainCard.jsx';
 import ClientEvents from "./clientEvents.jsx";
-import EventEndpoint from '@/services/server/eventEndpoint.js';
+import EventLayer from '@/services/accessData/eventLayer.js';
 import { formatDate } from "@/utils/textFormater.js";
 
 
 export default async function EventsPage(){
-  const eventEndpoint = new EventEndpoint();
-  const events = await eventEndpoint.getLastEvent();
+  const eventLayer = new EventLayer();
+  const events = await eventLayer.getLastEvent();
 
   if (!events) {
     return <div>No events found</div>;

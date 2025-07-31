@@ -3,12 +3,12 @@ import styles from './sermons.module.css';
 import Title from '@/components/titles/pageTitle/title';
 import MainCard from '@/components/cards/mainCard/mainCard';
 import ClientSermons from './clientSermons';
-import SermonEndpoint from '@/services/server/sermonEndpoint.js';
+import SermonLayer from '@/services/accessData/sermonLayer.js';
 import { formatDate } from '@/utils/textFormater.js';
 
 export default async function SermonPage() {
-  const sermonEndpoint = new SermonEndpoint();
-  const sermons = await sermonEndpoint.getLastSermon();
+  const sermonLayer = new SermonLayer();
+  const sermons = await sermonLayer.getLastSermon();
 
   if (!sermons) {
     return <div>No sermons found</div>;

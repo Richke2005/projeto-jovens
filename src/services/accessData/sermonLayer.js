@@ -1,5 +1,5 @@
 import Layer from "./layer.js";
-import SermonService from "../_services/sermonService.js";
+import SermonService from "@/app/api/_services/sermonService.js";
 
 const sermonService = new SermonService();
 
@@ -8,7 +8,7 @@ class SermonLayer extends Layer {
         super(sermonService);
     }
 
-    async getLast() {
+    async getLastSermon() {
         return await this.service.findLast();
     }
 }

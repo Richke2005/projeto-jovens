@@ -9,15 +9,15 @@ import Title from "@/components/titles/pageTitle/title";
 import crossImage from "../../../public/images/utils/cross.svg";
 import videoSource from "../../../videos/background-video.mov"; 
 import YouTubePlayer from "@/components/videos/youtubePlayer/youtubePlayer";
-import SermonEndpoint from "@/services/server/sermonEndpoint.js";
-import EventEndpoint from "@/services/server/eventEndpoint.js";
+import SermonLayer from "@/services/accessData/sermonLayer.js";
+import EventLayer from "@/services/accessData/eventLayer.js";
 
 
 export default async function Home() {
-  const sermonEndpoint = new SermonEndpoint();
-  const eventEndpoint = new EventEndpoint();
-  const events = await eventEndpoint.getAll(1, 5);
-  const sermons = await sermonEndpoint.getAll(1, 5);
+  const sermonLayer = new SermonLayer();
+  const eventLayer = new EventLayer();
+  const events = await eventLayer.getAll({ isPaginated: true, page: 1, limit: 5 });
+  const sermons = await sermonLayer.getAll({ isPaginated: true, page: 1, limit: 5 });
 
   if (!events || !sermons) {
     return <div>No events or sermons found</div>;
