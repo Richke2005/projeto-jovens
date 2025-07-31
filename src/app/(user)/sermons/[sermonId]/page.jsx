@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './sermon.module.css';
 import ArticleTitle from '@/components/titles/articleTitle/articleTitle';
 import YouTubePlayer from '@/components/videos/youtubePlayer/youtubePlayer';
-import SermonEndpoint from '@/services/sermonEndpoint';
+import SermonEndpoint from '@/services/server/sermonEndpoint';
 
 
 export const metadata = {

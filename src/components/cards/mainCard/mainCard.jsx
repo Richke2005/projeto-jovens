@@ -3,10 +3,8 @@ import React from 'react';
 import styles from './mainCard.module.css';
 import noImage from "../../../../public/images/utils/no-image.svg";
 import Image from 'next/image';
-import { resumeText } from '@/utils/textFormater';
+import { resumeText } from '@/utils/textFormater.js';
 import { useRouter } from 'next/navigation'
-
-
 
 /**
  * MainCard component displays a card with an image, title, date, and additional information.

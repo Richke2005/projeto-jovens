@@ -15,13 +15,7 @@ const links = [{
 }, {
     label: "Eventos",
     href: "/events"
-}, {
-    label: "Estudos",
-    href: "/estudos"
-}, {
-    label: "Playlists",
-    href: "/playlists"
-}, {
+},{
     label: "Quem Somos",
     href: "/quem-somos"
 }]

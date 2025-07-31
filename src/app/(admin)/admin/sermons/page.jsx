@@ -5,7 +5,7 @@ import Title from '@/components/titles/pageTitle/title';
 import Card from "@/components/cards/card/card.jsx";
 import LinkButton from '@/components/buttons/linkButton';
 import ActionButton from '@/components/buttons/actionButton';
-import SermonEndpoint from '@/services/sermonEndpoint.js';
+import SermonEndpoint from '@/services/server/sermonEndpoint.js';
 import Loading from '../../loading.jsx';
 import { formatDate } from '@/utils/textFormater';
 

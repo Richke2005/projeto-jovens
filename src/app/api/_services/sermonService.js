@@ -21,6 +21,19 @@ export default class SermonService extends Service {
         }
     }
 
+    async findLast(){
+        try{
+            return await this.client.findFirst({
+                orderBy: {
+                    start_date: 'desc'
+                }
+            });
+        }catch(error){
+            console.error("Error fetching last event:", error);
+            throw error;
+        }
+    }
+    
     async findByTitle(title) {
         try {
             return await this.client.findUnique({ where: { title } });

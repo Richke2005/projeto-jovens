@@ -6,8 +6,8 @@ import ActionButton from '@/components/buttons/actionButton.jsx';
 import AddVideo from '../../../components/videos/addVideo.jsx';
 import AddImage from '../../../components/images/addImage/addImage.jsx';
 import Spinner from '@/components/spinner/spinner';
-import SermonEndpoint from '@/services/sermonEndpoint.js';
-import FilesEndpoint from '@/services/filesEndpoint';
+import SermonEndpoint from '@/services/server/sermonEndpoint.js';
+import FilesEndpoint from '@/services/server/filesEndpoint';
 import Loading from '../../../loading.jsx';
 
 
@@ -59,7 +59,7 @@ export default function EditSermonPage() {
     }
 
        function validateForm() {
-        if (!title || !preacher || !image || !videoUrl || !summary) {
+        if (!title || !preacher || !summary) {
             alert("Por favor, preencha todos os campos obrigatórios.");
             return false;
         }

@@ -1,6 +1,6 @@
-class JovensAPI{
+class JovensClientAPI{
     constructor(route) {
-        this.baseURL = "http://localhost:4000/api";
+        this.baseURL = '/api';
         this.route = route;
     }
     
@@ -110,4 +110,4 @@ class JovensAPI{
     }
 }
 
-export default JovensAPI;
+export default JovensClientAPI;
