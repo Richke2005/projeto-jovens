@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './sermon.module.css';
 import ArticleTitle from '@/components/titles/articleTitle/articleTitle';
 import YouTubePlayer from '@/components/videos/youtubePlayer/youtubePlayer';
-import SermonEndpoint from '@/services/client/sermonEndpoint.js';
+import SermonLayer from '@/services/accessData/sermonLayer.js';
 
 
 export const metadata = {
@@ -11,10 +11,10 @@ export const metadata = {
 };
 
 export default async function SermonPage({ params }) {
-    const sermonEndpoint = new SermonEndpoint();
+    const sermonLayer = new SermonLayer();
 
     const { sermonId } = await params;
-    const sermon = await sermonEndpoint.getById(sermonId);
+    const sermon = await sermonLayer.getById(sermonId);
 
     return (
         <div className={styles.page}>

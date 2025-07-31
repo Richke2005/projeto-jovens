@@ -1,15 +1,16 @@
 import React from 'react';
 import styles from './event.module.css';
 import Image from 'next/image';
-import EventEndpoint from '@/services/client/eventEndpoint.js';
 import ArticleTitle from '@/components/titles/articleTitle/articleTitle';
+import EventLayer from '@/services/accessData/eventLayer';
+
 
 export default async function EventPage({ params }) {
-    const eventEndpoint = new EventEndpoint();
+    const eventLayer = new EventLayer();
 
     const { eventId } = await params;
-    const event = await eventEndpoint.getById(eventId);
-    
+    const event = await eventLayer.getById(eventId);
+
     return (
         <div className={styles.page}>
             <article className={styles.article}>
