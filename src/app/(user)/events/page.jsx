@@ -11,6 +11,10 @@ export default async function EventsPage(){
   const eventEndpoint = new EventEndpoint();
   const events = await eventEndpoint.getLastEvent();
 
+  if (!events) {
+    return <div>No events found</div>;
+  }
+
   return (
     <div className={styles.page}>
       <main>

@@ -1,6 +1,6 @@
 class JovensAPI{
     constructor(route) {
-        this.baseURL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
+        this.baseURL = process.env.NEXT_PUBLIC_API_URL;
         this.route = route;
     }
     

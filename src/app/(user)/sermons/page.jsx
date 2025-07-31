@@ -10,6 +10,10 @@ export default async function SermonPage() {
   const sermonEndpoint = new SermonEndpoint();
   const sermons = await sermonEndpoint.getLastSermon();
 
+  if (!sermons) {
+    return <div>No sermons found</div>;
+  }
+
   return (
     <div className={styles.page}>
       <main>

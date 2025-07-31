@@ -19,6 +19,10 @@ export default async function Home() {
   const events = await eventEndpoint.getAll(1, 5);
   const sermons = await sermonEndpoint.getAll(1, 5);
 
+  if (!events || !sermons) {
+    return <div>No events or sermons found</div>;
+  }
+
   return <div className={styles.page}>
     <main>
       <BackgroundImage
