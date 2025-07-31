@@ -6,7 +6,8 @@
     "dev": "next dev --port 4000 & npx next-video sync -w",
     "build": "prisma generate && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
