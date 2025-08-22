@@ -29,7 +29,14 @@ export default function EditSermonPage() {
 
     const fetchSermon = async () => {
         setIsLoading(true);
-        const { title, preacher, start_date, video_url, cover_image_url, summary } = await sermonsEndpoint.getById(sermonId);
+        const { 
+            title, 
+            preacher, 
+            start_date, 
+            video_url, 
+            cover_image_url, 
+            summary
+         } = await sermonsEndpoint.getById(sermonId);
         
         setPreacher(preacher);
         setTitle(title);
@@ -58,7 +65,7 @@ export default function EditSermonPage() {
         setVideoUrl(url);
     }
 
-       function validateForm() {
+    function validateForm() {
         if (!title || !preacher || !summary) {
             alert("Por favor, preencha todos os campos obrigatórios.");
             return false;
@@ -77,11 +84,9 @@ export default function EditSermonPage() {
             setIsUploading(true);
             if (validateForm()) {
                 // Upload the image file
-                const imageUrl = await filesEndpoint.uploadFile(image, groupId);
-
                 const sermonData = {
                     title: title,
-                    cover_image_url: imageUrl,
+                    cover_image_url: typeof(image) === 'string' ? image : await filesEndpoint.uploadFile(image, groupId),
                     video_url: videoUrl,
                     summary: summary,
                     start_date: startDate ? new Date(startDate).toISOString() : new Date().toISOString(),
@@ -159,7 +164,7 @@ export default function EditSermonPage() {
                 name="summary" 
                 placeholder="Resumo"
                 value={summary}
-                onChange={(e)=>setSummary(e.target.value)}/>  
+                onChange={(e)=> setSummary(e.target.value)}/>  
 
                 <ActionButton onClick={handleUpdateSermon}>
                     <div style={{display: "flex", alignItems: "center", gap: 10}}>
